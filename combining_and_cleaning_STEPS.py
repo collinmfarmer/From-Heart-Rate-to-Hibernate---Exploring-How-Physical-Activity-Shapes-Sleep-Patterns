@@ -6,7 +6,7 @@ import os
 # Using glob to read in all the steps CSVs
 data_files = r".\Raw CSVs"
 df= pd.DataFrame()
-file_list = glob.glob(os.path.join(data_files, 'steps_2025*.csv')) 
+file_list = glob.glob(os.path.join(data_files, "steps_2025*.csv")) 
 
 # Checking to confirm the file path and pattern of the files are correct
 if file_list:
@@ -37,4 +37,4 @@ daily_filled = daily_filled.rename(columns={"steps": "total_steps_taken"})
 daily_filled = daily_filled.rename(columns={"timestamp": "date"})
 
 # Create new cleaned CSV for the steps data
-daily_filled.to_csv('cleaned_daily_steps.csv', index=False) 
+daily_filled.to_csv("cleaned_daily_steps.csv", index=False) 
