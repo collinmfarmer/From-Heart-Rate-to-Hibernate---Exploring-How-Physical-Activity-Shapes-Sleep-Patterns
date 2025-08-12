@@ -2,8 +2,17 @@
 
 From Heart Rate to Hibernate investigates how physical activity influences sleep quality, using real-world data collected from Fitbit wearables. The primary aim of this analysis is to uncover patterns and correlations between daily movement metrics—like step count, active minutes, and heart rate variability—and key sleep indicators such as total sleep duration, sleep efficiency, and restlessness.
 
+## Table of Contents
 
-
+- [From Heart Rate to Hibernate: Exploring How Physical Activity Shapes Sleep Patterns](#from-heart-rate-to-hibernate-exploring-how-physical-activity-shapes-sleep-patterns)
+- [Table of Contents](#table-of-contents)
+- [Objectives](#objectives)
+- [Project Setup](#project-setup)
+   - [Virtual Environment Commands](#virtual-environment-commands)
+- [Data Source](#data-source)
+- [How to run program](#how-to-run-program)
+- [Data Dictionary](#data-dictionary)
+- [Project Summary](#project-summary)
 
 ## Objectives:
 
