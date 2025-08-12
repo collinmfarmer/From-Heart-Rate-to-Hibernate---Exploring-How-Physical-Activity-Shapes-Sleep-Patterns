@@ -59,8 +59,22 @@ All the data files were exported from my Fitbit account. The file types were CSV
       - \Takeout\Fitbit\Global Export Data
 
 
-## Steps to run program
-??????????????????????????????????????????
+## How to run program
+If you downloaded your own Fitbit data and moved the corresponding above files to the correct folders, you will want to run all the scripts. Starting with the python scripts:
+
+- Python
+  - combining_and_cleaning_AZM.py
+  - combining_and_cleaning_HR.py
+  - combining_and_cleaning_STEPS.py
+  - combining_and_flattening_SLEEP.py
+
+After you run all the Python scripts, you can open up each of the Jupyter Notebooks and click "Run All" at the top of the notebook. 
+
+- Jupyter Notebook
+  - cleaning_sleep_data.ipynb
+  - forming_sql_database.ipynb
+
+This will output a final CSV file titled "cleaned_total_data.csv". This CSV file will contain all the cleaned and concatenated data. 
 
 
 ## Data Dictionary
