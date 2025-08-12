@@ -2,17 +2,10 @@
 import pandas as pd
 import glob
 import os
+from function_list import pull_csv_concat
 
-# Using glob to read in all the active zone minutes CSVs
-data_files = r".\Raw CSVs"
-df= pd.DataFrame()
-file_list = glob.glob(os.path.join(data_files, "Active Zone Minutes - 2025*.csv")) 
-
-# Checking to confirm the file path and pattern of the files are correct
-if file_list:
-    df = pd.concat(map(pd.read_csv, file_list), ignore_index=True)
-else:
-    print("No matching CSV files found. Check your path and pattern.")
+# Using pull_csv_concat function to read in all the active zone minutes CSVs and combine them
+df = pull_csv_concat("Active Zone Minutes -*.csv")
 
 # Convert "date_time" to datetime
 df["date_time"] = pd.to_datetime(df["date_time"])
