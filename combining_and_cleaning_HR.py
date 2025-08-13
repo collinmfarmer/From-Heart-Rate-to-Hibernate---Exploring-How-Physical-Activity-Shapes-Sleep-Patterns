@@ -3,24 +3,13 @@ import pandas as pd
 import glob
 import os
 from function_list import pull_csv_concat
+from function_list import resample_daily
 
 # Using pull_csv_concat function to read in all the heart rate CSVs and combine them
 df = pull_csv_concat("heart_rate_*.csv")
 
-# Convert "timestamp" to datetime
-df["timestamp"] = pd.to_datetime(df["timestamp"])
-
-# Set "timestamp" as index
-df.set_index("timestamp", inplace=True)
-
-# Group by day and sum "beats per minute"
-daily = df["beats per minute"].resample("D").mean()
-
-# Fill missing days with zero
-daily_filled = daily.fillna(0)
-
-# Reset index to have "timestamp" as a column again
-daily_filled = daily_filled.reset_index()
+# Resampled Dataframe to daily frequency 
+daily_filled = resample_daily(df, time_col="timestamp", value_col="beats per minute", agg_method="mean")
 
 # Remove time from "timestamp"
 daily_filled["timestamp"] = daily_filled["timestamp"].dt.date

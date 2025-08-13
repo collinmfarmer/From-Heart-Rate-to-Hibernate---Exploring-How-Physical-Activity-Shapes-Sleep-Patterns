@@ -4,18 +4,15 @@ import os
 
 
 
-# Creating a function to read in and concat all the CSVs using a filepath
 def pull_csv_concat(csv_name: str):
     """
-    Function:
-    Searches for CSV files matching the given pattern in the Raw CSVs folder, reads them in, and concatenates them into a single dataframe.
+    Searches for CSV files matching the given pattern in the Raw CSVs folder, reads them in, and concatenates them into a single dataframe
 
     Parameters:
-    csv_name (str): Filename pattern
+    - csv_name (str): Filename pattern
 
     Returns: 
-    Dataframe made from all concatenated files matching the filename pattern. 
-
+    - Dataframe made from all concatenated files matching the filename pattern
     """
     data_files = r".\Raw CSVs"
     df= pd.DataFrame()
@@ -32,16 +29,14 @@ def pull_csv_concat(csv_name: str):
 
 
 
-# Creating a function to 
 def write_dfs_to_sql(df_dict, conn, if_exists = "replace"):
     """
-    Function:
-    Write multiple dataframes to SQL database. 
+    Write multiple dataframes to SQL database
 
     Parameters:
-    df_dict: dictionary where keys are table names and values are dataframes
-    conn: SQL connection
-    if_exists: how to behave if the table already exists
+    - df_dict: dictionary where keys are table names and values are dataframes
+    - conn: SQL connection
+    - if_exists: how to behave if the table already exists
 
     """
     for table_name, df in df_dict.items():
@@ -50,4 +45,40 @@ def write_dfs_to_sql(df_dict, conn, if_exists = "replace"):
 
 
 
-# 
+
+def resample_daily(df, time_col, value_col, agg_method="sum", fill_missing=True):
+    """
+    Resamples a DataFrame to daily frequency
+
+    Parameters:
+    - df (pd.DataFrame): Input DataFrame
+    - time_col (str): Name of the date column
+    - value_col (str): Name of the value column to aggregate
+    - agg_method (str): Aggregation method (sum or mean)
+    - fill_missing (bool): Whether to fill missing days with 0
+
+    Returns:
+    - pd.DataFrame: Daily resampled DataFrame with date and aggregated values
+    """
+    # Convert date column to datetime
+    df[time_col] = pd.to_datetime(df[time_col])
+
+    # Set date as index
+    df = df.set_index(time_col)
+
+    # Resample by day using specified aggregation
+    if agg_method == "sum":
+        daily = df[value_col].resample("D").sum()
+    elif agg_method == "mean":
+        daily = df[value_col].resample("D").mean()
+    else:
+        raise ValueError("agg_method must be sum or mean")
+
+    # Fill missing days with 0 if requested
+    if fill_missing:
+        daily = daily.fillna(0)
+
+    # Reset index to restore date column
+    daily_filled = daily.reset_index()
+
+    return daily_filled

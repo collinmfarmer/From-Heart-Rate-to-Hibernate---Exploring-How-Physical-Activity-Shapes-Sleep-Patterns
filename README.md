@@ -16,11 +16,11 @@ From Heart Rate to Hibernate investigates how physical activity influences sleep
 
 ## Objectives:
 
-1. Quantify correlations between exercise intensity and sleep quality
+1. Quantify correlations between exercise intensity and sleep quality.
 
-2. Identify trends or thresholds where activity most positively impacts rest
+2. Identify trends or thresholds where activity most positively impacts rest.
 
-3. Translate raw metrics into actionable insights for optimizing daily routines
+3. Translate raw metrics into actionable insights for optimizing daily routines.
 
 
 
@@ -89,11 +89,11 @@ This will output a final CSV file titled "cleaned_total_data.csv". This CSV file
 ## Data Dictionary
 | Column | Description | Data Type |
 | ------- | --------- | --------- | 
-| date | Date that data was collected. | object |
-| active_zone_minutes | Total number of minutes that my heart rate was above 117 BPM. | int64 |
-| avg_beats_per_minute | Average of the day's BPM. | float64 |
+| date | Date that the data was collected. | object |
+| active_zone_minutes | Total number of minutes that my heart rate was above 117 beats per minute. | int64 |
+| avg_beats_per_minute | Average of the day's beats per minute. | float64 |
 | total_steps_taken | Number of recorded steps. | int64 |
-| date_of_sleep | The date the sleep log ended. (Shifted back by one day) | object |
+| date_of_sleep | The date the sleep log ended. | object |
 | sleep_start_time | Time the sleep log started. | object |
 | sleep_end_time | Time the sleep log ended. | object |
 | sleep_duration | Length of the sleep in milliseconds. | int64 |
@@ -107,7 +107,7 @@ This will output a final CSV file titled "cleaned_total_data.csv". This CSV file
 | main_sleep | Boolean value: true or false | bool |
 | sleep_restless_count | Total number of times the user entered the sleep level of restless. | float64 |
 | sleep_restless_minutes | Total number of minutes the user appeared in the sleep level of restless. | float64 |
-| sleep_awake_count | Total number of times the user entered the sleep level if awake. | float64 |
+| sleep_awake_count | Total number of times the user entered the sleep level of awake. | float64 |
 | sleep_awake_minutes | Total number of minutes the user appeared in the sleep level of awake. | float64 |
 | sleep_asleep_count | Total number of times the user entered the sleep level of asleep. | float64 |
 | sleep_asleep_minutes | Total number of minutes the user appeared in the sleep level of asleep. | float64 |
