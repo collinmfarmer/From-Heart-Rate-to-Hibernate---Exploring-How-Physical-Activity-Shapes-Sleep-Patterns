@@ -1,6 +1,7 @@
 # From Heart Rate to Hibernate: Exploring How Physical Activity Shapes Sleep Patterns
 
-From Heart Rate to Hibernate investigates how physical activity influences sleep quality, using real-world data collected from Fitbit wearables. The primary aim of this analysis is to uncover patterns and correlations between daily movement metrics—like step count, active minutes, and heart rate variability—and key sleep indicators such as total sleep duration, sleep efficiency, and restlessness.
+From Heart Rate to Hibernate investigates how physical activity influences sleep quality, using real-world data collected from Fitbit wearables. The primary aim of this analysis is to uncover patterns and correlations between daily movement metrics—like step count, active minutes, and heart rate—and key sleep indicators such as total sleep duration, sleep efficiency, and percentage of time in each sleep level.
+
 
 ## Table of Contents
 
@@ -12,7 +13,11 @@ From Heart Rate to Hibernate investigates how physical activity influences sleep
 - [Data Source](#data-source)
 - [How to run program](#how-to-run-program)
 - [Data Dictionary](#data-dictionary)
+- [Tech Used](#tech-used)
 - [Project Summary](#project-summary)
+- [Tableau Public Dashboard](#tableau-public-dashboard)
+- [Dedication](#dedication)
+
 
 ## Objectives:
 
@@ -21,8 +26,6 @@ From Heart Rate to Hibernate investigates how physical activity influences sleep
 2. Identify trends or thresholds where activity most positively impacts rest.
 
 3. Translate raw metrics into actionable insights for optimizing daily routines.
-
-
 
 
 ## Project Setup
@@ -38,6 +41,7 @@ In order to run this project:
 2. Open the repository in the IDE of your choice.
 3. Use the following commands to enter the virtual environment and install the requirements.txt file: 
 
+
 ### Virtual Environment Commands
 | Command | Linux/Mac | Windows |
 | ------- | --------- | ------- |
@@ -46,13 +50,12 @@ In order to run this project:
 | Deactivate | `deactivate` | `deactivate` |
 
 
-
 ## Data Source
 
 All the data files were exported from my Fitbit account. The file types were CSV and JSON. To download you own Fitbit data, use the following steps:
  1. On the [Fitbit settings](https://accounts.fitbit.com/login?targetUrl=https%3A%2F%2Fwww.fitbit.com%2Flogin%2Ftransferpage%3Fredirect%3Dhttps%25253A%25252F%25252Fwww.fitbit.com%25252Fsettings%25252Fprofile%25253Fsjid%25253D2794903053053765236-NA&lcl=en_US) page, click Data Export ​​​​​​​under the Settings menu.
  2. Choose the time period and data you want to include, and the file format.
- 3. Click Download.
+ 3. Click Create Export.
  
 #### Once the files have been downloaded from your Fitbit account., navigate to the Takeout folder that was downloaded and move the following files to the corresponding folder in your local repository based on file type:
 
@@ -125,7 +128,61 @@ This will output a final CSV file titled "cleaned_total_data.csv". This CSV file
 | sleep_rem_thirtyDayAvgMinutes | The average rem sleep stage time over the past 30 days. A sleep stage log is required to generate this value. When a classic sleep log is recorded, this value will be missing. | float64 |
 
 
+## Tech Used
+All coding was done using Python. Pandas was used within Juypter Notebook for data analysis and data manipulation. SQLite was used to create my database. Everything was coded within the Visual Studio Code IDE. Tableau Public was used for visualizations. 
 
 
 ## Project Summary 
-????????????????????????????????????????????????????
+While exercise intensity does appear to influence sleep quality to some extent, my findings suggest it's only one piece of a much larger puzzle. Sleep is shaped by a complex interplay of factors including stress levels, diet, screen time, and individual physiology that go beyond physical activity alone.
+
+### 1. Quantify correlations between exercise intensity and sleep quality.
+
+| Step Range | Primary Sleep Stage Correlated with Higher AZM |
+| ------- | --------- |
+| 0–2,499 steps | Light Sleep |
+| 2,500–4,999 steps | 	Deep Sleep |
+| 5,000–7,499 steps | Light Sleep |
+| 7,500–9,999 steps | REM Sleep |
+| 10,000+ steps | Deep Sleep |
+
+These findings suggest that the impact of exercise intensity on sleep architecture may shift depending on overall activity level. For example, medium activity (2,500–4,999 steps) appears to enhance restorative deep sleep, while higher activity levels (7,500–9,999 steps) may promote more REM sleep, associated with cognitive processing and memory.
+
+### 2. Identify trends or thresholds where activity most positively impacts rest.
+
+- Low Activity (0–2,499 steps): Increased AZM show modest gains in light sleep, but overall rest remains limited. Suggesting minimal movement may not be sufficient to trigger deeper restorative sleep stages.
+- Moderate Activity (2,500–4,999 steps): This range marks a noticeable shift, where higher AZM correlates most strongly with deep sleep, indicating that even moderate movement paired with intensity can enhance physical recovery.
+- Mid-High Activity (5,000–7,499 steps): AZM again aligns with light sleep, possibly reflecting a plateau effect where intensity supports rest but doesn’t yet push into deeper sleep stages.
+- High Activity (7,500–9,999 steps): A compelling trend emerges here. AZM correlates most with REM sleep, which is critical for cognitive processing and memory.
+- Very High Activity (10,000+ steps): At this threshold, AZM is most strongly linked to deep sleep, suggesting that sustained movement and intensity may optimize physical recovery and overall sleep architecture.
+
+These thresholds suggest that moderate-to-high activity levels, especially when paired with higher (AZM), are most effective in promoting restorative sleep stages. The sweet spot appears to be between 2,500 and 10,000 steps, where different sleep stages are selectively enhanced depending on the activity profile.
+
+### 3. Translate raw metrics into actionable insights for optimizing daily routines.
+- Low Activity (0–2,499 steps)
+  - Insight: Minimal movement yields only slight improvements in light sleep.
+  - Action: Prioritize short, high-intensity bursts such as brisk short walks to boost AZM without needing high step counts.
+
+- Moderate Activity (2,500–4,999 steps)
+  - Insight: This range correlates most with deep sleep which is necessary for physical recovery. 
+  - Action: Target this zone on rest days or when recovery is a priority. Add moderate-intensity movement like cycling or yoga to maximize deep sleep benefits.
+
+- Mid-High Activity (5,000–7,499 steps)
+  - Insight: AZM aligns with light sleep, suggesting a maintenance effect.
+  - Action: Use this range for steady-state days ideal for maintaining rhythm without overexertion. Great for mental reset or low impact cardio.
+
+- High Activity (7,500–9,999 steps)
+  - Insight: Strong correlation with REM sleep, which supports memory and cognitive processing.
+  - Action: Schedule cognitively demanding tasks such learning and problem-solving the day after hitting this range. Prioritize mental recovery.
+
+- Very High Activity (10,000+ steps)
+  - Insight: Deep sleep returns as the dominant benefit, indicating optimal physical restoration.
+  - Action: Use this threshold for peak training days. Pair with proper nutrition and wind-down routines to fully capitalize on recovery potential.
+
+By aligning your movement patterns with sleep outcomes, you can strategically design your day whether you're aiming for recovery, mental clarity, or performance.
+
+## Tableau Public Dashboard
+[Link to my Tableau Public visualizaion](https://public.tableau.com/views/FitbitDashboard_17549512206080/FitbitDataDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+
+### Dedication
+This project is dedicated to my late wife. She is the one who inspired me to reach out of my comfort zone and better myself through furthering my knowledge base. 
